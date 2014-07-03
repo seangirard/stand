@@ -88,9 +88,13 @@ $(function() {
         ,data: {  }
       })
       .done(function(obj) {
-      	console.log(obj);
+      	var api = {
+      							route: obj,
+      							params: _self.params
+
+      						}
         var tmpl = Handlebars.compile( $('#stand-route-tmpl').html() );
-        $('#stand-app').html(tmpl( {api:obj} ));
+        $('#stand-app').html(tmpl( {api:api} ));
       })
       .fail(function() {
       	error = { msg: 'Could not load route.' }

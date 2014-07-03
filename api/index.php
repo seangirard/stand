@@ -73,26 +73,33 @@ class SG_STA_GTFS {
 	}
 
 	protected function getParams() {
-		$config = new stdClass();
+		$params = new stdClass();
+
+		$params->direction->outbound = 0;
+		$params->direction->inbound = 1;
+
+		$params->service->weekday = 1;
+		$params->service->saturday = 2;
+		$params->service->sunday = 3;
 		
-		$config->today->weekday = false;
-		$config->today->saturday = false;
-		$config->today->sunday = false;
+		$params->today->weekday = false;
+		$params->today->saturday = false;
+		$params->today->sunday = false;
 		$now = new DateTime;
 		switch($now->format('N')) {
 			case 6:
-				$config->today->saturday = true;
+				$params->today->saturday = true;
 				break;
 			case 7:
-				$config->today->sunday = true;
+				$params->today->sunday = true;
 				break;
 			default:
-				$config->today->weekday = true;
+				$params->today->weekday = true;
 				break;
 		}
 
 
-		return $config;
+		return $params;
 	}
 
 	protected function getAgency() {
