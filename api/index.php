@@ -208,8 +208,10 @@ class SG_STA_GTFS {
 
 		$q = $this->query($sql, $params);
 		foreach ( $q as $k => $time ) {
-			$q[$k]->arrival_time_formatted = $time->arrival_time;
-			$q[$k]->departure_time_formatted = $time->departure_time;
+			$arrival = new DateTime($time->arrival_time);
+			$q[$k]->arrival_time_formatted = $arrival->format('H:m');
+			$departure = new DateTime($time->departure_time);
+			$q[$k]->departure_time_formatted = $departure->format('H:m');
 		}
 		return $q;
 	}
