@@ -37,8 +37,8 @@ class SG_STA_GTFS {
 	public function init() {
 		$rest = explode('/', $_REQUEST['endpoint']);
 		switch ($rest[0]) {
-			case 'config':
-				$this->api = $this->getConfig();
+			case 'params':
+				$this->api = $this->getParams();
 				break;
 			case 'agency':
 				$this->api = $this->getAgency();
@@ -72,7 +72,7 @@ class SG_STA_GTFS {
 
 	}
 
-	protected function getConfig() {
+	protected function getParams() {
 		$config = new stdClass();
 		
 		$config->today->weekday = false;

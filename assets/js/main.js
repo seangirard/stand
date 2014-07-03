@@ -10,30 +10,45 @@ $(function() {
 				rest: './api/'
 			}
 		
+			this.bindEvents();
+			this.loadParams();
+			
+		},
+
+		throwError: function(error) {
+			var tmpl = Handlebars.compile( $('#stand-error-tmpl').html() );
+       $('#stand-app').html(tmpl( {error:error} ));
+		},
+
+		bindEvents: function() {
+			$('body').on('click', '.stand-route', function(e) {
+				e.preventDefault();
+				console.log($(this).attr('href'));
+			});
+
+		},
+
+		loadParams: function() {
+			
 			$.ajax({ 
-        url: _self.config.rest+'config'
+        url: _self.config.rest+'params'
         ,data: {  }
       })
       .done(function(obj) {
       	//console.log(obj);
       	_self.params = obj;
-      	_self.routes();
+      	_self.getRoutes();
       })
       .fail(function() {
       	error = { msg: 'Could not load app. Please check that you have a network connection.' }
-      	_self.error(error);
+      	_self.throwError(error);
       })
       .always(function() {
       });
 
-		},
+		}
 
-		error: function(error) {
-			var tmpl = Handlebars.compile( $('#stand-error-tmpl').html() );
-       $('#stand-app').html(tmpl( {error:error} ));
-		},
-
-		routes: function() {
+		getRoutes: function() {
 			console.log(this.config);
 			console.log(this.params);
 			$.ajax({ 
