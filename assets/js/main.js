@@ -23,7 +23,8 @@ $(function() {
 		bindEvents: function() {
 			$('body').on('click', '.stand-route', function(e) {
 				e.preventDefault();
-				console.log($(this).attr('href'));
+				var hash = $(this).attr('href');
+				_self.getRoute(hash.substring(1));
 			});
 
 		},
@@ -38,9 +39,9 @@ $(function() {
       	//console.log(obj);
       	_self.params = obj;
 
-      	var rid = window.location.hash;
-      	if ( rid ) {
-      		_self.getRoute(rid);
+      	var hash = window.location.hash;
+      	if ( hash ) {
+      		_self.getRoute(hash.substring(1));
       	} else {
       		_self.getRoutes();
       	}
