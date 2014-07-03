@@ -99,7 +99,7 @@ $(function() {
       })
       .done(function(obj) {
       	var api = obj;
-      	api.params: _self.params;
+      	api.params = _self.params;
 
         var tmpl = Handlebars.compile( $('#stand-route-tmpl').html() );
         $('#stand-app').html(tmpl( {api:api} ));
