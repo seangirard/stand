@@ -1,6 +1,12 @@
 $(function() {
 	
-	$.ajax({ 
+	stand.init();
+
+	stand = {
+
+		init: function() {
+
+			$.ajax({ 
         url: './api/config'
         ,data: {  }
       })
@@ -12,6 +18,12 @@ $(function() {
       .always(function() {
       });
 
+		}
+
+
+	}
+
+	
 
 	$.ajax({ 
         url: './api/routes'
