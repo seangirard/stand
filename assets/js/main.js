@@ -46,7 +46,7 @@ $(function() {
       .always(function() {
       });
 
-		}
+		},
 
 		getRoutes: function() {
 			console.log(this.config);
