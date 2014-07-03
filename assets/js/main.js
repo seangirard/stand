@@ -5,14 +5,18 @@ $(function() {
 		init: function() {
 
 			_self = this;
+
+			this.config = {
+				endpoint: './api/'
+			}
 		
 			$.ajax({ 
-        url: './api/config'
+        url: _self.config.endpoint+'config'
         ,data: {  }
       })
       .done(function(obj) {
       	//console.log(obj);
-      	_self.config = obj;
+      	_self.params = obj;
       	_self.routes();
       })
       .fail(function() {
@@ -31,8 +35,9 @@ $(function() {
 
 		routes: function() {
 			console.log(this.config);
+			console.log(this.params);
 			$.ajax({ 
-        url: './api/routes'
+        url: _self.config.endpoint+'routes'
         ,data: {  }
       })
       .done(function(obj) {
