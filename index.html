@@ -110,6 +110,12 @@
 	    		{{route.route_short_name}} 
 	    		<small>{{route.route_long_name}}</small>
 	    	</h3>	
+
+	    Departing 
+	    {{#each trips}}
+	    	{{times.[0].departure_time}}
+	    {{/each}}
+
     	{{/with}}
     	</script> 
 
