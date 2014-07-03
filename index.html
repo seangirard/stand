@@ -69,7 +69,14 @@
     	</script> 
 
     	<script id="stand-error-tmpl" type="text/x-handlebars-template">
-    	{{error.msg}}
+    	<div class="panel panel-warning">
+    		<div class="panel-heading">
+    			<h4>Error</h4>
+    		</div>
+		    <div class="panel-body">
+		    	{{error.msg}}
+		    </div>
+    	</div>
     	</script>  
     
       
