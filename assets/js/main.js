@@ -28,7 +28,7 @@ $(function() {
 		error: function(error) {
 			var tmpl = Handlebars.compile( $('#stand-error-tmpl').html() );
        $('#stand-app').html(tmpl( {error:error} ));
-		}
+		},
 
 		routes: function() {
 
