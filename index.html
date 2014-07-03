@@ -69,6 +69,14 @@
     	{{/each}}
     	</script> 
 
+    	<script id="stand-route-tmpl" type="text/x-handlebars-template">
+    	{{#each api}}
+    		<h4>
+    			{{route_short_name}} <small>{{route_long_name}}</small>
+    		</h4>
+    	{{/each}}
+    	</script> 
+
     	<script id="stand-error-tmpl" type="text/x-handlebars-template">
     	<div class="panel panel-warning">
     		<div class="panel-heading">

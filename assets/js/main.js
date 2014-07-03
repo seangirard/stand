@@ -89,7 +89,7 @@ $(function() {
       })
       .done(function(obj) {
       	console.log(obj);
-        var tmpl = Handlebars.compile( $('#stand-routes-tmpl').html() );
+        var tmpl = Handlebars.compile( $('#stand-route-tmpl').html() );
         $('#stand-app').html(tmpl( {api:obj} ));
       })
       .fail(function() {
