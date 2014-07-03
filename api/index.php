@@ -153,7 +153,8 @@ class SG_STA_GTFS {
 						WHERE route_short_name = :route
 					";
 
-		return $this->query($sql, $params);
+		$q = $this->query($sql, $params);
+		return $q[0];
 	}
 
 	protected function getTrips ( $rid=null, $sid=null, $did=null ) {
