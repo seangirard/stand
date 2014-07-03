@@ -37,6 +37,9 @@ class SG_STA_GTFS {
 	public function init() {
 		$rest = explode('/', $_REQUEST['endpoint']);
 		switch ($rest[0]) {
+			case 'config':
+				$this->api = $this->getConfig();
+				break;
 			case 'agency':
 				$this->api = $this->getAgency();
 				break;
@@ -67,6 +70,10 @@ class SG_STA_GTFS {
 			$this->output();
 		}
 
+	}
+
+	protected function getConfig() {
+		return 'config';
 	}
 
 	protected function getAgency() {

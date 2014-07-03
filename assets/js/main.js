@@ -1,4 +1,17 @@
 $(function() {
+	
+	$.ajax({ 
+        url: './api/config'
+        ,data: {  }
+      })
+      .done(function(obj) {
+      	console.log(obj);
+      })
+      .fail(function() {
+      })
+      .always(function() {
+      });
+
 
 	$.ajax({ 
         url: './api/routes'
