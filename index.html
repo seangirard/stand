@@ -70,15 +70,15 @@
     	</script> 
 
     	<script id="stand-route-tmpl" type="text/x-handlebars-template">
-    	Test
-    	<h3>
-    			{{api.route.route_short_name}} 
-    			<small>{{route.route_long_name}}</small>
-    	</h3>
+    	{{#with api}}
+	    	<h3>
+	    			{{route.route_short_name}} 
+	    			<small>{{route.route_long_name}}</small>
+	    	</h3>
 
-    	{{params.direction.outbound}}
-    	{{params.direction.inbound}}
-    	
+	    	{{params.direction.outbound}}
+	    	{{params.direction.inbound}}
+    	{{/with}}
     	</script> 
 
     	<script id="stand-error-tmpl" type="text/x-handlebars-template">
