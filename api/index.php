@@ -44,9 +44,13 @@ class SG_STA_GTFS {
 				$api = new stdClass();
 				$api->route = $this->getRoute($rest[1]);
 				$api->trips = $this->getTrips($api->route->route_id);
-				foreach ($api->trips as $k => $trip) {
+				foreach ( $api->trips as $k => $trip ) {
 					$api->trips[$k]->times = $this->getTimes($trip->trip_id);
 				}
+				foreach ( $api->trips[0] as $k => $stop ) {
+					$api->stops[$k] = $stop; 
+				}
+
 				$this->api = $api;
 				break;
 			case 'agency':
