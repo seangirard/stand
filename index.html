@@ -67,29 +67,35 @@
 	    <script id="stand-tools-tmpl" type="text/x-handlebars-template">
     	{{#with api}}
 
-	    	<div class="btn-group input-group btn-group-justified" data-toggle="buttons">
-				  <label class="btn btn-success">
-				    <input type="radio" name="options" id="option1" checked> <b>To</b> Downtown
-				  </label>
-				  <label class="btn btn-success">
-				    <input type="radio" name="options" id="option2"> <b>From</b> Downtown
-				  </label>
-				</div>
+    	<div class="row">
+    		<div class="col-md-6">
 
-				<hr>
+		    	<div class="btn-group input-group btn-group-justified" data-toggle="buttons">
+					  <label class="btn btn-success">
+					    <input type="radio" name="options" id="option1" checked> <b>To</b> Downtown
+					  </label>
+					  <label class="btn btn-success">
+					    <input type="radio" name="options" id="option2"> <b>From</b> Downtown
+					  </label>
+					</div>
 
-			  <div class="btn-group input-group btn-group-justified" data-toggle="buttons">
-				  <label class="btn btn-primary">
-				    <input type="radio" name="options" id="option1" checked> Weekdays
-				  </label>
-				  <label class="btn btn-primary">
-				    <input type="radio" name="options" id="option2"> Saturday
-				  </label>
-				  <label class="btn btn-primary">
-				    <input type="radio" name="options" id="option3"> Sunday/Holidays
-				  </label>
-				</div>
-	    	
+				</div><!-- /.col -->
+				<div class="col-md-6">
+
+				  <div class="btn-group input-group btn-group-justified" data-toggle="buttons">
+					  <label class="btn btn-primary">
+					    <input type="radio" name="options" id="option1" checked> Weekdays
+					  </label>
+					  <label class="btn btn-primary">
+					    <input type="radio" name="options" id="option2"> Saturday
+					  </label>
+					  <label class="btn btn-primary">
+					    <input type="radio" name="options" id="option3"> Sunday/Holidays
+					  </label>
+					</div>
+					
+				</div><!-- /.col -->
+	    </div><!-- /.row -->
     	{{/with}}
     	</script> 
     	
