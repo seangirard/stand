@@ -74,10 +74,23 @@ class SG_STA_GTFS {
 
 	protected function getConfig() {
 		$config = new stdClass();
-
+		
+		$config->today->weekday = false;
+		$config->today->saturday = false;
+		$config->today->sunday = false;
 		$now = new DateTime;
+		switch($now->format('N')) {
+			case 6:
+				$config->today->saturday = true;
+				break;
+			case 7:
+				$config->today->sunday = true;
+				break;
+			default:
+				$config->today->weekday = true;
+				break;
+		}
 
-		$config->today = $now->format('d');
 
 		return $config;
 	}
