@@ -47,7 +47,7 @@ class SG_STA_GTFS {
 				foreach ( $api->trips as $k => $trip ) {
 					$api->trips[$k]->times = $this->getTimes($trip->trip_id);
 				}
-				
+
 				$this->api = $api;
 				break;
 			case 'agency':
@@ -167,15 +167,15 @@ class SG_STA_GTFS {
 		return $q[0];
 	}
 
-	protected function getTrips ( $rid=null, $sid=null, $did=null ) {
-		$params = array();
+	protected function getTrips ( $rid, $sid=1, $did=0 ) {
+		$params = array(':rid'=>$rid, ':sid'=>$sid, ':did'=>$did);
 		
 		$sql = "SELECT
 						*
 						FROM trips
-						WHERE route_id = '4876'
-						AND service_id = '1'
-						AND direction_id = '1'
+						WHERE route_id = :rid
+						AND service_id = :sid
+						AND direction_id = :did
 					";
 		
 		return $this->query($sql, $params);
@@ -190,7 +190,8 @@ class SG_STA_GTFS {
 						WHERE trip_id = :trip
 					";
 
-		return $this->query($sql, $params);
+		$q = $this->query($sql, $params);
+		return $q[0];
 	}
 
 	protected function getTimes($trip) {
@@ -205,7 +206,12 @@ class SG_STA_GTFS {
 						ORDER BY stop_sequence*100 -- fake a natsort
 					";
 
-		return $this->query($sql, $params);
+		$q = $this->query($sql, $params);
+		foreach ( $q as $k => $time ) {
+			$q[$k]->arrival_time_formatted = $time->arrival_time;
+			$q[$k]->departure_time_formatted = $time->departure_time;
+		}
+		return $q;
 	}
 
 }
