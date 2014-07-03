@@ -36,7 +36,6 @@ $(function() {
         ,data: {  }
       })
       .done(function(obj) {
-      	//console.log(obj);
       	_self.params = obj;
 
       	var hash = window.location.hash;
@@ -47,7 +46,7 @@ $(function() {
       	}
       })
       .fail(function() {
-      	error = { msg: 'Could not load app. Please check that you have a network connection.' }
+      	error = { msg: 'Could not load app.' }
       	_self.throwError(error);
       })
       .always(function() {
@@ -55,11 +54,38 @@ $(function() {
 
 		},
 
+		showRoutes: function() {
+			var tmpl = Handlebars.compile( $('#stand-routes-tmpl').html() );
+      $('#stand-app').html(tmpl( {api:_self.config.routes} ));
+		},
+
 		getRoutes: function() {
-			console.log(this.config);
-			console.log(this.params);
+			if ( _self.config.routes ) {
+				_self.showRoutes();
+			} else {
+				$.ajax({ 
+	        url: _self.config.rest+'routes'
+	        ,data: {  }
+	      })
+	      .done(function(obj) {
+	      	_self.config.routes = obj;
+	        _self.showRoutes();
+	      })
+	      .fail(function() {
+	      	error = { msg: 'Could not load routes.' }
+	      	_self.throwError(error);
+	      })
+	      .always(function() {
+	      });
+	    }
+
+		},
+
+		getRoute: function(rid) {
+			
+			/*
 			$.ajax({ 
-        url: _self.config.rest+'routes'
+        url: _self.config.rest+'route/'+rid
         ,data: {  }
       })
       .done(function(obj) {
@@ -68,14 +94,13 @@ $(function() {
         $('#stand-app').html(tmpl( {api:obj} ));
       })
       .fail(function() {
+      	error = { msg: 'Could not load route.' }
+      	_self.throwError(error);
       })
       .always(function() {
       });
+			*/
 
-		},
-
-		getRoute: function(rid) {
-			console.log(rid);
 		}
 
 
