@@ -56,25 +56,16 @@
     <!-- content -->
    
     <div class="container" style="font-size:18px;">
-      <div class="col-lg-6">
-      	<div id="stand-app">
-    	  	Loading&hellip;
-  	    </div>
-	    </div>
-    	
-    	<script id="stand-routes-tmpl" type="text/x-handlebars-template">
-    	{{#each api}}
-    		<a href="#{{route_short_name}}" class="btn btn-block btn-primary stand-route">
-    			<b>{{route_short_name}}</b> - {{route_long_name}}</a>
-    	{{/each}}
-    	</script> 
 
-    	<script id="stand-route-tmpl" type="text/x-handlebars-template">
+    	<div id="stand-toolbar">
+    	</div>
+
+    	<div id="stand-app">
+  	  	Loading&hellip;
+	    </div>
+
+	    <script id="stand-tools-tmpl" type="text/x-handlebars-template">
     	{{#with api}}
-	    	<h3>
-	    			{{route.route_short_name}} 
-	    			<small>{{route.route_long_name}}</small>
-	    	</h3>
 
 	    	<div class="btn-group input-group btn-group-justified" data-toggle="buttons">
 				  <label class="btn btn-success">
@@ -98,9 +89,23 @@
 				    <input type="radio" name="options" id="option3"> Sunday/Holidays
 				  </label>
 				</div>
-
-				
 	    	
+    	{{/with}}
+    	</script> 
+    	
+    	<script id="stand-routes-tmpl" type="text/x-handlebars-template">
+    	{{#each api}}
+    		<a href="#{{route_short_name}}" class="btn btn-block btn-primary stand-route">
+    			<b>{{route_short_name}}</b> - {{route_long_name}}</a>
+    	{{/each}}
+    	</script> 
+
+    	<script id="stand-route-tmpl" type="text/x-handlebars-template">
+    	{{#with api}}
+	    	<h3>
+	    		{{route.route_short_name}} 
+	    		<small>{{route.route_long_name}}</small>
+	    	</h3>	
     	{{/with}}
     	</script> 
 

@@ -38,6 +38,8 @@ $(function() {
       .done(function(obj) {
       	_self.params = obj;
 
+      	_self.loadTools();
+
       	var hash = window.location.hash;
       	if ( hash ) {
       		_self.getRoute(hash.substring(1));
@@ -52,6 +54,14 @@ $(function() {
       .always(function() {
       });
 
+		},
+
+		loadTools: function() {
+			var api = {
+      						params: _self.params
+      					}
+        var tmpl = Handlebars.compile( $('#stand-tools-tmpl').html() );
+        $('#stand-tools').html(tmpl( {api:api} ));
 		},
 
 		showRoutes: function() {
@@ -93,7 +103,6 @@ $(function() {
       							params: _self.params
 
       						}
-      	console.log(api);
         var tmpl = Handlebars.compile( $('#stand-route-tmpl').html() );
         $('#stand-app').html(tmpl( {api:api} ));
       })
