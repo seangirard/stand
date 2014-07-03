@@ -10,6 +10,8 @@ $(function() {
       })
       .done(function(obj) {
       	console.log(obj);
+      	var tmpl = Handlebars.compile( $('#stand-error-tmpl').html() );
+        $('#stand-app').html(tmpl( {api:obj} ));
       })
       .fail(function() {
       })
@@ -27,7 +29,7 @@ $(function() {
       .done(function(obj) {
       	console.log(obj);
         var tmpl = Handlebars.compile( $('#stand-routes-tmpl').html() );
-        $('#stand-routes').html(tmpl( {api:obj} ));
+        $('#stand-app').html(tmpl( {api:obj} ));
       })
       .fail(function() {
       })

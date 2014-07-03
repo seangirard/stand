@@ -56,16 +56,20 @@
     <!-- content -->
    
     <div class="container" style="font-size:18px;">
-      
-      <div id="stand-routes">
-      	Getting routes&hellip;
-      </div>
+      <div class="col-md-6">
+      	<div id="stand-app">
+    	  	Loading&hellip;
+  	    </div>
+	    </div>
+    	
     	<script id="stand-routes-tmpl" type="text/x-handlebars-template">
-    	<div class="col-md-6">
     	{{#each api}}
     		<a href="#" class="btn btn-block btn-primary">{{route_short_name}} - {{route_long_name}}</a>
     	{{/each}}
-    	</div>
+    	</script> 
+
+    	<script id="stand-error-tmpl" type="text/x-handlebars-template">
+    	This is an error.
     	</script>  
     
       
