@@ -94,7 +94,7 @@ $(function() {
 		getRoute: function(rid) {
 			
 			$.ajax({ 
-        url: _self.config.rest+'route/'+rid
+        url: _self.config.rest+'timetable/'+rid
         ,data: {  }
       })
       .done(function(obj) {

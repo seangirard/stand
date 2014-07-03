@@ -40,6 +40,15 @@ class SG_STA_GTFS {
 			case 'params':
 				$this->api = $this->getParams();
 				break;
+			case 'timetable':
+				$api = new stdClass();
+				$api->route = $this->getRoute($rest[1]);
+				$api->trips = $this->getTrips($api->route->route_id);
+				foreach ($api->trips as $k => $trip) {
+					$api->trips[$k]->times = $this->getTimes($trip->trip_id);
+				}
+				$this->api = $api;
+				break;
 			case 'agency':
 				$this->api = $this->getAgency();
 				break;
@@ -48,14 +57,7 @@ class SG_STA_GTFS {
 				$this->api = $this->getCalendar($sid);
 				break;
 			case 'route':
-				//$this->api = $this->getRoute($rest[1]);
-				$api = new stdClass();
-				$api->route = $this->getRoute($rest[1]);
-				$api->trips = $this->getTrips($api->route->route_id);
-				foreach ($api->trips as $k => $trip) {
-					$api->trips[$k]->times = $this->getTimes($trip->trip_id);
-				}
-				$this->api = $api;
+				$this->api = $this->getRoute($rest[1]);
 				break;
 			case 'routes':
 				$this->api = $this->getRoutes();
