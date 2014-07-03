@@ -1,7 +1,5 @@
 $(function() {
 	
-	stand.init();
-
 	stand = {
 
 		init: function() {
@@ -22,6 +20,8 @@ $(function() {
 
 
 	}
+
+	stand.init();
 
 	
 
