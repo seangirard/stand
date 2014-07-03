@@ -24,7 +24,6 @@ $(function() {
 			$('body').on('click', '.stand-route', function(e) {
 				e.preventDefault();
 				var hash = $(this).attr('href');
-				console.log(hash);
 				_self.getRoute(hash.substring(1));
 			});
 
