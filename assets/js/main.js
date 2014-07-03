@@ -37,7 +37,13 @@ $(function() {
       .done(function(obj) {
       	//console.log(obj);
       	_self.params = obj;
-      	_self.getRoutes();
+
+      	var rid = window.location.hash;
+      	if ( rid ) {
+      		_self.getRoute(rid);
+      	} else {
+      		_self.getRoutes();
+      	}
       })
       .fail(function() {
       	error = { msg: 'Could not load app. Please check that you have a network connection.' }
@@ -65,6 +71,10 @@ $(function() {
       .always(function() {
       });
 
+		},
+
+		getRoute: function(rid) {
+			console.log(rid);
 		}
 
 
