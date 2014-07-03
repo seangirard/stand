@@ -1,5 +1,8 @@
 $(function() {
 
+	console.log('js');
+
+	/*
 	$('.find-supper').typeahead('destroy');
 
 	
@@ -24,5 +27,6 @@ $(function() {
     //console.log(datum);
     window.location.href = datum.href;
 	});
+	*/
 
 });
