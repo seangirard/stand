@@ -93,6 +93,7 @@ $(function() {
       							params: _self.params
 
       						}
+      	console.log(api);
         var tmpl = Handlebars.compile( $('#stand-route-tmpl').html() );
         $('#stand-app').html(tmpl( {api:api} ));
       })
