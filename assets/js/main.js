@@ -16,16 +16,11 @@ $(function() {
       .always(function() {
       });
 
-		}
+		},
 
+		routes: function() {
 
-	}
-
-	stand.init();
-
-	
-
-	$.ajax({ 
+			$.ajax({ 
         url: './api/routes'
         ,data: {  }
       })
@@ -38,6 +33,14 @@ $(function() {
       })
       .always(function() {
       });
+
+		}
+
+
+	}
+
+	stand.init();
+
 
 	/*
 	$('.find-supper').typeahead('destroy');
