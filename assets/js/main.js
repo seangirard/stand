@@ -83,7 +83,6 @@ $(function() {
 
 		getRoute: function(rid) {
 			
-			/*
 			$.ajax({ 
         url: _self.config.rest+'route/'+rid
         ,data: {  }
@@ -99,7 +98,7 @@ $(function() {
       })
       .always(function() {
       });
-			*/
+			
 
 		}
 
