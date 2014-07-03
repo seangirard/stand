@@ -2,16 +2,17 @@ $(function() {
 	
 	stand = {
 
-		_self: this,
-
 		init: function() {
 
+			_self = this;
+		
 			$.ajax({ 
         url: './api/config'
         ,data: {  }
       })
       .done(function(obj) {
       	console.log(obj);
+      	this.config = obj;
 
       	error = { msg: 'Could not load app. Please check that you have a network connection.' }
       	_self.error(error);
