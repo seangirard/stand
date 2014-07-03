@@ -106,12 +106,13 @@
 
     	<script id="stand-route-tmpl" type="text/x-handlebars-template">
     	{{#with api}}
-	    	<h3>
-	    		{{route.route_short_name}} 
-	    		<small>{{route.route_long_name}}</small>
-	    	</h3>	
+    	<h3>
+    		{{route.route_short_name}} 
+    		<small>{{route.route_long_name}}</small>
+    	</h3>	
 
-	    Departing 
+	    <h4>Departing</h4>
+	     
 	    {{#each trips}}
 	    	<div class="col-xs-6 col-sm-4 col-md-3">
 		    	<a href="#" class="btn btn-block btn-warning">
