@@ -49,7 +49,7 @@ class SG_STA_GTFS {
 				break;
 			case 'route':
 				//$this->api = $this->getRoute($rest[1]);
-				var $api = new stdClass();
+				$api = new stdClass();
 				//$api->route = $this->getRoute($rest[1]);
 				//$api->trips = $this->getTrips($api->route->route_id);
 				$this->api = $api;
