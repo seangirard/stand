@@ -92,7 +92,10 @@ $(function() {
 		},
 
 		getRoute: function(rid) {
-			
+			var api = {}
+			var tmpl = Handlebars.compile( $('#stand-loading-tmpl').html() );
+      $('#stand-app').html(tmpl( {api:api} ));
+
 			$.ajax({ 
         url: _self.config.rest+'timetable/'+rid
         ,data: {  }
