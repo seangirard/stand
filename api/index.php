@@ -73,7 +73,13 @@ class SG_STA_GTFS {
 	}
 
 	protected function getConfig() {
-		return 'config';
+		$config = new stdClass();
+
+		$now = new DateTime;
+
+		$config->today = $now->format('d');
+
+		return $config;
 	}
 
 	protected function getAgency() {

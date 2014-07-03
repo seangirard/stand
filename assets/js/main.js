@@ -7,11 +7,11 @@ $(function() {
 			_self = this;
 
 			this.config = {
-				endpoint: './api/'
+				rest: './api/'
 			}
 		
 			$.ajax({ 
-        url: _self.config.endpoint+'config'
+        url: _self.config.rest+'config'
         ,data: {  }
       })
       .done(function(obj) {
@@ -37,7 +37,7 @@ $(function() {
 			console.log(this.config);
 			console.log(this.params);
 			$.ajax({ 
-        url: _self.config.endpoint+'routes'
+        url: _self.config.rest+'routes'
         ,data: {  }
       })
       .done(function(obj) {
