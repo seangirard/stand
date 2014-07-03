@@ -2,6 +2,8 @@ $(function() {
 	
 	stand = {
 
+		_self: this,
+
 		init: function() {
 
 			$.ajax({ 
@@ -11,10 +13,10 @@ $(function() {
       .done(function(obj) {
       	console.log(obj);
 
-      	error = { msg: 'My error' }
-      	var tmpl = Handlebars.compile( $('#stand-error-tmpl').html() );
+      	error = { msg: 'Could not load app. Please check that you have a network connection.' }
+      	_self.error(error);
+      	//var tmpl = Handlebars.compile( $('#stand-error-tmpl').html() );
         //$('#stand-app').html(tmpl( {api:obj} ));
-        $('#stand-app').html(tmpl( {error:error} ));
       })
       .fail(function() {
       })
@@ -22,6 +24,11 @@ $(function() {
       });
 
 		},
+
+		error: function(error) {
+			var tmpl = Handlebars.compile( $('#stand-error-tmpl').html() );
+       $('#stand-app').html(tmpl( {error:error} ));
+		}
 
 		routes: function() {
 
