@@ -5,8 +5,9 @@ $(function() {
         ,data: {  }
       })
       .done(function(obj) {
-      	$('#stand-routes').html('loaded');
-        console.log(obj);
+      	console.log(obj);
+        var tmpl = Handlebars.compile( $('#stand-routes-tmpl').html() );
+        $('#stand-routes').html(tmpl( {api:obj} ));
       })
       .fail(function() {
       })

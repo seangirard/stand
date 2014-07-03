@@ -60,6 +60,12 @@
       <div id="stand-routes">
       	Getting routes&hellip;
       </div>
+    	<script id="stand-routes-tmpl" type="text/x-handlebars-template">
+    	{{#each api}}
+    		{{route_short_name}}
+    		<br>
+    	{{/each}}
+    	</script>  
     
       
     </div><!-- /.container -->
