@@ -1,6 +1,16 @@
 $(function() {
 
-	console.log('js');
+	$.ajax({ 
+        url: './api/routes'
+        ,data: {  }
+      })
+      .done(function(obj) {
+        console.log(obj);
+      })
+      .fail(function() {
+      })
+      .always(function() {
+      });
 
 	/*
 	$('.find-supper').typeahead('destroy');
