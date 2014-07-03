@@ -59,7 +59,7 @@
 
     	<div id="stand-tools">
     	</div>
-    	<hr>
+
     	<div id="stand-app">
   	  	Loading&hellip;
 	    </div>
@@ -85,10 +85,10 @@
 					    <input type="radio" name="options" id="option1" checked> Weekdays
 					  </label>
 					  <label class="btn btn-primary">
-					    <input type="radio" name="options" id="option2"> Saturday
+					    <input type="radio" name="options" id="option2"> Saturdays
 					  </label>
 					  <label class="btn btn-primary">
-					    <input type="radio" name="options" id="option3"> Sunday<span class="hidden-xs">/Holidays</span>
+					    <input type="radio" name="options" id="option3"> Sundays<span class="hidden-xs">/Holidays</span>
 					  </label>
 					</div>
 
@@ -99,7 +99,7 @@
     	
     	<script id="stand-routes-tmpl" type="text/x-handlebars-template">
     	{{#each api}}
-    		<a href="#{{route_short_name}}" class="btn btn-block btn-primary stand-route">
+    		<a href="#{{route_short_name}}" class="btn btn-block btn-warning stand-route">
     			<b>{{route_short_name}}</b> - {{route_long_name}}</a>
     	{{/each}}
     	</script> 
