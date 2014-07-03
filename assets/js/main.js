@@ -5,6 +5,7 @@ $(function() {
         ,data: {  }
       })
       .done(function(obj) {
+      	$('#stand-routes').html('loaded');
         console.log(obj);
       })
       .fail(function() {
