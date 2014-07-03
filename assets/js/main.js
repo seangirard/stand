@@ -22,7 +22,7 @@ $(function() {
 
 		bindEvents: function() {
 			$('body').on('click', '.stand-route', function(e) {
-				e.preventDefault();
+				//e.preventDefault();
 				var hash = $(this).attr('href');
 				_self.getRoute(hash.substring(1));
 			});
