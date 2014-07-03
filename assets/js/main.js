@@ -11,15 +11,13 @@ $(function() {
         ,data: {  }
       })
       .done(function(obj) {
-      	console.log(obj);
-      	this.config = obj;
-
-      	error = { msg: 'Could not load app. Please check that you have a network connection.' }
-      	_self.error(error);
-      	//var tmpl = Handlebars.compile( $('#stand-error-tmpl').html() );
-        //$('#stand-app').html(tmpl( {api:obj} ));
+      	//console.log(obj);
+      	_self.config = obj;
+      	_self.routes();
       })
       .fail(function() {
+      	error = { msg: 'Could not load app. Please check that you have a network connection.' }
+      	_self.error(error);
       })
       .always(function() {
       });
@@ -32,7 +30,7 @@ $(function() {
 		},
 
 		routes: function() {
-
+			console.log(this.config);
 			$.ajax({ 
         url: './api/routes'
         ,data: {  }
