@@ -10,8 +10,11 @@ $(function() {
       })
       .done(function(obj) {
       	console.log(obj);
+
+      	error = { msg: 'My error' }
       	var tmpl = Handlebars.compile( $('#stand-error-tmpl').html() );
-        $('#stand-app').html(tmpl( {api:obj} ));
+        //$('#stand-app').html(tmpl( {api:obj} ));
+        $('#stand-app').html(tmpl( {error:error} ));
       })
       .fail(function() {
       })
