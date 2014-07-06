@@ -228,6 +228,17 @@ class SG_STA_GTFS {
 	}
 
 	protected function getStops($trips) {
+		$params = array();
+		$sql = "SELECT DISTINCT stops.stop_id, stops.stop_name
+					  FROM trips
+					  INNER JOIN stop_times ON stop_times.trip_id = trips.trip_id
+					  INNER JOIN stops ON stops.stop_id = stop_times.stop_id
+					  WHERE route_id = 45
+					";
+		$q = $this->query($sql, $params);
+		return $q;
+
+
 		// http://www.php.net/manual/en/pdostatement.execute.php
 		// Create a string for the parameter placeholders filled to the number of params
 		$tids = implode(',', array_fill(0, count($trips), '?'));
@@ -242,7 +253,7 @@ class SG_STA_GTFS {
 		foreach ( $q as $k => $stop ) {
 			$stops[$k] = $stop->stop_id;
 		}
-		print_r($stops);
+		
 		$sids = implode(',', array_fill(0, count($stops), '?'));
 		$sql = "SELECT
 						*
