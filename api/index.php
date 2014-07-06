@@ -239,7 +239,7 @@ class SG_STA_GTFS {
 					";
 		$stops = $this->query($sql, $trips);
 		$stops = (array)$stops;
-		//print_r($stops->toArray());
+		print_r($stops);
 		$sids = implode(',', array_fill(0, count($stops), '?'));
 		$sql = "SELECT
 						*
