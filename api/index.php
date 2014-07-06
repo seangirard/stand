@@ -238,7 +238,8 @@ class SG_STA_GTFS {
 						ORDER BY stop_sequence*100 -- fake a natsort
 					";
 		$stops = $this->query($sql, $trips);
-		print_r($stops->toArray());
+		$stops = (array)$stops;
+		//print_r($stops->toArray());
 		$sids = implode(',', array_fill(0, count($stops), '?'));
 		$sql = "SELECT
 						*
