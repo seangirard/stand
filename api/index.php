@@ -50,6 +50,12 @@ class SG_STA_GTFS {
 
 				$this->api = $api;
 				break;
+			case 'stoptable':
+				$api = new stdClass();
+				$api->stops = 'my stops';
+
+				$this->api = $api;
+				break;
 			case 'agency':
 				$this->api = $this->getAgency();
 				break;
