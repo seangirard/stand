@@ -230,15 +230,23 @@ class SG_STA_GTFS {
 	protected function getStops($trips) {
 		// http://www.php.net/manual/en/pdostatement.execute.php
 		// Create a string for the parameter placeholders filled to the number of params
-		$params = implode(',', array_fill(0, count($trips), '?'));
-
+		$tids = implode(',', array_fill(0, count($trips), '?'));
 		$sql = "SELECT
 						DISTINCT stop_id
 						FROM stop_times
-						WHERE trip_id IN ($params) 
+						WHERE trip_id IN ($tids) 
+						ORDER BY stop_sequence*100 -- fake a natsort
 					";
+		$stops = $this->query($sql, $tids);
 
-		$q = $this->query($sql, $trips);
+		$sids = implode(',', array_fill(0, count($stops), '?'));
+		$sql = "SELECT
+						*
+						FROM stops
+						WHERE stop_id IN ($sid) 
+					";
+		$stops = $this->query($sql, $sids);
+
 		return $q;
 	}
 
