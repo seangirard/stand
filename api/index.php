@@ -59,7 +59,7 @@ class SG_STA_GTFS {
 					$trips[] = $trip->trip_id;
 				}
 				$api->stops = $this->getStops($trips);
-				$this->api = $api;
+				$this->api = $api->stops;
 				break;
 			case 'agency':
 				$this->api = $this->getAgency();
