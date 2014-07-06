@@ -58,7 +58,8 @@ class SG_STA_GTFS {
 				foreach ( $api->trips as $k => $trip ) {
 					$trips[] = $trip->trip_id;
 				}
-				$this->api = $trips;
+				$api->stops = $this->getStops($trips);
+				$this->api = $api;
 				break;
 			case 'agency':
 				$this->api = $this->getAgency();
