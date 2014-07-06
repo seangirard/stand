@@ -238,7 +238,7 @@ class SG_STA_GTFS {
 						WHERE trip_id IN ($params) 
 					";
 
-		$q = $this->query($sql, $params);
+		$q = $this->query($sql, $trips);
 		return $q;
 	}
 
