@@ -52,7 +52,7 @@ class SG_STA_GTFS {
 				break;
 			case 'stoptable':
 				$api = new stdClass();
-				$api->stops = 'my stops';
+				$api->route = $this->getRoute($rest[1]);
 
 				$this->api = $api;
 				break;
