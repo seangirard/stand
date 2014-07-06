@@ -233,7 +233,7 @@ class SG_STA_GTFS {
 					  FROM trips
 					  INNER JOIN stop_times ON stop_times.trip_id = trips.trip_id
 					  INNER JOIN stops ON stops.stop_id = stop_times.stop_id
-					  WHERE route_id = 45
+					  WHERE route_id = '45'
 					";
 		$q = $this->query($sql, $params);
 		return $q;
