@@ -228,6 +228,7 @@ class SG_STA_GTFS {
 	}
 
 	protected function getStops($trips) {
+		/*
 		$params = array();
 		$sql = "SELECT DISTINCT stops.stop_id, stops.stop_name
 					  FROM trips
@@ -237,7 +238,7 @@ class SG_STA_GTFS {
 					";
 		$q = $this->query($sql, $params);
 		return $q;
-
+		*/
 
 		// http://www.php.net/manual/en/pdostatement.execute.php
 		// Create a string for the parameter placeholders filled to the number of params
