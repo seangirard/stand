@@ -55,7 +55,7 @@ class SG_STA_GTFS {
 				$api->route = $this->getRoute($rest[1]);
 				$api->trips = $this->getTrips($api->route->route_id);
 
-				
+
 				$this->api = $api;
 				break;
 			case 'agency':
@@ -221,6 +221,21 @@ class SG_STA_GTFS {
 			$departure = new DateTime($time->departure_time);
 			$q[$k]->departure_time_formatted = $departure->format('g:i a');
 		}
+		return $q;
+	}
+
+	protected function getStops($trips) {
+		// http://www.php.net/manual/en/pdostatement.execute.php
+		// Create a string for the parameter placeholders filled to the number of params
+		$params = implode(',', array_fill(0, count($trips), '?'));
+
+		$sql = "SELECT
+						DISTINCT stop_id
+						FROM stops_times
+						WHERE trip_id IN ($params) 
+					";
+
+		$q = $this->query($sql, $params);
 		return $q;
 	}
 
