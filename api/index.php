@@ -237,8 +237,11 @@ class SG_STA_GTFS {
 						WHERE trip_id IN ($tids) 
 						ORDER BY stop_sequence*100 -- fake a natsort
 					";
-		$stops = $this->query($sql, $trips);
-		//$stops = get_object_vars($stops);
+		$q = $this->query($sql, $trips);
+		$stops = array();
+		foreach ( $a as $k => $stop ) {
+			$stops[$k] = $stop->stop_id;
+		}
 		print_r($stops);
 		$sids = implode(',', array_fill(0, count($stops), '?'));
 		$sql = "SELECT
