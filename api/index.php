@@ -234,7 +234,7 @@ class SG_STA_GTFS {
 
 		$sql = "SELECT
 						DISTINCT stop_id
-						FROM stops_times
+						FROM stop_times
 						WHERE trip_id IN ($params) 
 					";
 
