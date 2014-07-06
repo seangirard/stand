@@ -239,7 +239,7 @@ class SG_STA_GTFS {
 					";
 		$q = $this->query($sql, $trips);
 		$stops = array();
-		foreach ( $a as $k => $stop ) {
+		foreach ( $q as $k => $stop ) {
 			$stops[$k] = $stop->stop_id;
 		}
 		print_r($stops);
