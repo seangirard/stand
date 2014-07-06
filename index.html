@@ -120,10 +120,13 @@
 	    {{#each trips}}
 	    	<div class="col-xs-6 col-sm-4 col-md-3">
 		    	<p>
-			    	<a href="#" class="btn btn-block btn-warning">
+			    	<a href="#trip-id-{{trip_id}}" class="btn btn-block btn-warning" data-toggle="collapse">
 			    		<b>{{times.[0].departure_time_formatted}}</b>
 			    	</a>
 		    	</p>
+		    	<div id="trip-id-{{trip_id}}" class="collapse">
+		    		{{trip_headsign}}
+		    	</div>
 	    	</div>
 	    	{{#each times}}
 
