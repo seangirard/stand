@@ -238,16 +238,16 @@ class SG_STA_GTFS {
 						ORDER BY stop_sequence*100 -- fake a natsort
 					";
 		$stops = $this->query($sql, $trips);
-		/*
+		
 		$sids = implode(',', array_fill(0, count($stops), '?'));
 		$sql = "SELECT
 						*
 						FROM stops
-						WHERE stop_id IN ($sid) 
+						WHERE stop_id IN ($sids) 
 					";
-		$stops = $this->query($sql, $sids);
-		*/
-		return $stops;
+		$q = $this->query($sql, $stops);
+		
+		return $q;
 	}
 
 }
