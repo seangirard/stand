@@ -81,7 +81,7 @@ class SG_STA_GTFS {
 			case 'stoptable':
 				$api = new stdClass();
 				$api->route = $this->getRoute($rest[1]);
-				$api->trips = $this->getTrips($api->route->route_id);
+				$api->trips = $this->getTrips($api->route->route_id, $rest[2], $rest[3]);
 				$trips = array();
 				foreach ( $api->trips as $k => $trip ) {
 					$trips[] = $trip->trip_id;
@@ -110,6 +110,9 @@ class SG_STA_GTFS {
 				break;
 			case 'times':
 				$this->api = $this->getTimes($rest[1]);
+				break;
+			case 'stop':
+				$this->api = $this->getStopByTrip($rest[1], $rest[2]);
 				break;
 			default:
 				break;
@@ -294,6 +297,21 @@ class SG_STA_GTFS {
 					";
 		$q = $this->query($sql, $stops);
 		
+		return $q;
+	}
+
+	protected function getStopByTrip($stop, $trip) {
+		$params = array(':stop'=>$stop, ':trip'=>$trip);
+
+		$sql = "SELECT
+						*
+						FROM stop_times
+						WHERE stop_id = :stop
+						AND trip_id = :trip
+					";
+
+		$q = $this->query($sql, $params);
+
 		return $q;
 	}
 
