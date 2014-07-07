@@ -119,7 +119,6 @@
 
 	    <div class="panel-group" id="trips-accordion">
 	    {{#each trips}}
-	    	
 	    	<div class="panel panel-default">
 			    <div class="panel-heading">
 			      <h4 class="panel-title">
@@ -132,31 +131,10 @@
 			      <div class="panel-body">
 			      	{{trip_headsign}}
 			    		{{#each times}}
-			    		{{/times}}
+			    		{{/each}}
 			      </div>
 			    </div>
 			  </div>
-
-
-
-
-
-	    	<div class="col-xs-6 col-sm-4 col-md-3">
-		    	<p>
-			    	<a href="#trip-id-{{trip_id}}" class="btn btn-block btn-warning" data-toggle="collapse">
-			    		<b>{{times.[0].departure_time_formatted}}</b>
-			    	</a>
-		    	</p>
-		    	<div id="trip-id-{{trip_id}}" class="collapse">
-		    		{{trip_headsign}}
-		    		{{#each times}}
-
-		    		{{/times}}
-		    	</div>
-	    	</div>
-	    	{{#each times}}
-
-	    	{{/each}}
 	    {{/each}}
 	    </div><!-- /#trips-accordion -->
 
