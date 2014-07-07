@@ -122,10 +122,9 @@ class SG_STA_GTFS {
 					$trips[] = $trip->trip_id;
 				}
 				$api->times = $this->getStop($rest[4], $trips);
+				$api->stop = $this->getStopById($rest[4]);
 				unset($api->trips);
-				$this->api->stop = $this->getStopById($rest[4]);
 				$this->api = $api;
-
 				break;
 			default:
 				break;
