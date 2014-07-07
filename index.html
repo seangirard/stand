@@ -128,9 +128,11 @@
 			    <div id="trip-id-{{trip_id}}" class="panel-collapse collapse">
 			      <div class="panel-body">
 			      	{{trip_headsign}}
+			      	<ul class="list-unstyled">
 			    		{{#each times}}
-			    			{{stop_name}} &ndash; {{stop_desc}}
+			    			<li>{{stop_name}} &ndash; {{stop_desc}}</li>
 			    		{{/each}}
+			    		</ul>
 			      </div>
 			    </div>
 			  </div>
