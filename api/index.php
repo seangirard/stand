@@ -307,7 +307,7 @@ class SG_STA_GTFS {
 						*
 						FROM stop_times
 						WHERE stop_id = :stop
-						AND trip_id = :trip
+						--AND trip_id = :trip
 					";
 
 		$q = $this->query($sql, $params);
