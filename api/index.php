@@ -323,6 +323,7 @@ class SG_STA_GTFS {
 						ORDER BY stop_sequence*100 -- fake a natsort
 					";
 		$q = $this->query($sql, $trips);
+		/*
 		$stops = array();
 		foreach ( $q as $k => $stop ) {
 			$stops[$k] = $stop->stop_id;
@@ -335,7 +336,7 @@ class SG_STA_GTFS {
 						WHERE stop_id IN ($sids) 
 					";
 		$q = $this->query($sql, $stops);
-		
+		*/
 		return $q;
 	}
 
