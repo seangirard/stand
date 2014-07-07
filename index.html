@@ -115,14 +115,14 @@
 	    {{#each trips}}
 	    	<div class="panel panel-warning">
 			    <div class="panel-heading">
-						<h4 class="panel-title">
+						<h3 class="panel-title">
 							{{depart.departure_time_formatted}}
 		          <small>Depart</small>
 		          {{arrive.arrival_time_formatted}}
 		          <small>Arrive</small>
 		          <span class="hidden-xs">{{trip_headsign}}</span>
 						</h4>			        
-		        <a class="btn btn-block btn-warning" data-toggle="collapse" data-parent="#trips-accordion" href="#trip-id-{{trip_id}}">
+		        <a class="btn btn-lg btn-block btn-warning" data-toggle="collapse" data-parent="#trips-accordion" href="#trip-id-{{trip_id}}">
 		          Timetable
 		          <span class="caret"></span>
 		        </a>
