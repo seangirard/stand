@@ -4,6 +4,26 @@
 ini_set('display_errors', true);
 error_reporting(E_ALL ^ E_NOTICE);
 
+/**
+ *
+ * Allow for jsonp requests  
+ *
+ */
+function json_echo($data, $encode=true, $callback='callback') {
+    if ($encode) { 
+        // JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
+        $json = json_encode($data);
+    } else {
+        // Cached data, previously encoded
+        $json = $data;
+    }
+    //header('Content-Type: application/json; charset=utf-8');
+    header('Content-Type: text/javascript; charset=utf-8'); 
+    echo isset($_REQUEST[$callback])
+        ? "{$_REQUEST[$callback]}($json)"
+        : $json;    
+}
+
 $api = new SG_STA_GTFS();
 
 class SG_STA_GTFS {
@@ -23,8 +43,9 @@ class SG_STA_GTFS {
 	}
 
 	public function output() {
-		header('Content-Type: application/json');
-		echo json_encode($this->api);
+		//header('Content-Type: application/json');
+		//echo json_encode($this->api);
+		json_echo($this->api);
 	}
 
 	public function query($sql, $params) {
