@@ -48,7 +48,7 @@ class SG_STA_GTFS {
 					$api->trips[$k]->times = $this->getTimes($trip->trip_id);
 				}
 				foreach ( $api->trips as $k => $trip ) {
-					$api->trips[$k]->depart = $api->trips[0];
+					$api->trips[$k]->depart = $trip->times[0];
 				}
 				$this->api = $api;
 				break;
