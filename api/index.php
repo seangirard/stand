@@ -49,6 +49,7 @@ class SG_STA_GTFS {
 				}
 				foreach ( $api->trips as $k => $trip ) {
 					$api->trips[$k]->depart = $trip->times[0];
+					$api->trips[$k]->arrive = $trip->times[count($trip->times)];
 				}
 				$this->api = $api;
 				break;
