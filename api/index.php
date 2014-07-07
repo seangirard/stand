@@ -324,22 +324,18 @@ class SG_STA_GTFS {
 					";
 		$q = $this->query($sql, $trips);
 		
-		$stops = array();
-		foreach ( $q as $k => $stop ) {
-			if ( $stop->stop_id == $sid ) {
-				$stops[] = $stop;
+		$stop = array();
+		foreach ( $q as $k => $time ) {
+			if ( $time->stop_id == $sid ) {
+				$arrival = new DateTime($time->arrival_time);
+				$time->arrival_time_formatted = $arrival->format('g:i a');
+				$departure = new DateTime($time->departure_time);
+				$time->departure_time_formatted = $departure->format('g:i a');
+				$stop[] = $time;
 			}
 		}
-		/*
-		$sids = implode(',', array_fill(0, count($stops), '?'));
-		$sql = "SELECT
-						*
-						FROM stops
-						WHERE stop_id IN ($sids) 
-					";
-		$q = $this->query($sql, $stops);
-		*/
-		return $stops;
+
+		return $stop;
 	}
 
 	protected function getStopByTrip($stop, $trip) {
