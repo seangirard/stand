@@ -73,7 +73,7 @@ class SG_STA_GTFS {
 					$api->trips[$k]->arrive = $trip->times[count($trip->times)-1];
 				}
 				$this->api = $api;
-				$this->api = $rest;
+				//$this->api = $rest;
 				break;
 			case 'stoptable':
 				$api = new stdClass();
