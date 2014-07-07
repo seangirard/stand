@@ -124,7 +124,7 @@
 			    <div class="panel-heading">
 			      <h4 class="panel-title">
 			        <a data-toggle="collapse" data-parent="#trips-accordion" href="#trip-id-{{trip_id}}">
-			          Collapsible Group Item #1
+			          <b>{{times.[0].departure_time_formatted}}</b>
 			        </a>
 			      </h4>
 			    </div>
@@ -138,6 +138,25 @@
 			  </div>
 
 
+
+
+
+	    	<div class="col-xs-6 col-sm-4 col-md-3">
+		    	<p>
+			    	<a href="#trip-id-{{trip_id}}" class="btn btn-block btn-warning" data-toggle="collapse">
+			    		<b>{{times.[0].departure_time_formatted}}</b>
+			    	</a>
+		    	</p>
+		    	<div id="trip-id-{{trip_id}}" class="collapse">
+		    		{{trip_headsign}}
+		    		{{#each times}}
+
+		    		{{/times}}
+		    	</div>
+	    	</div>
+	    	{{#each times}}
+
+	    	{{/each}}
 	    {{/each}}
 	    </div><!-- /#trips-accordion -->
 
