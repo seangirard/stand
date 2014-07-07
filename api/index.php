@@ -244,7 +244,7 @@ class SG_STA_GTFS {
 
 		$q = $this->query($sql, $params);
 		foreach ( $q as $k => $time ) {
-			if (substr($departure_time, -1) == ':00')) {
+			if (substr($time->departure_time, -1) == ':00')) {
 				$q[$k]->major_stop = true;
 			}
 			$arrival = new DateTime($time->arrival_time);
