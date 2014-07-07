@@ -350,7 +350,7 @@ class SG_STA_GTFS {
 
 		$q = $this->query($sql, $params);
 
-		return $q;
+		return $q[0];
 	}
 
 }
