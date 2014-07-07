@@ -113,6 +113,7 @@ class SG_STA_GTFS {
 				break;
 			case 'stop':
 				//$this->api = $this->getStopByTrip($rest[1], $rest[2]);
+				/*
 				$api = new stdClass();
 				$api->route = $this->getRoute($rest[1]);
 				$api->trips = $this->getTrips($api->route->route_id, $rest[2], $rest[3]);
@@ -122,7 +123,7 @@ class SG_STA_GTFS {
 				}
 				$api->stops = $this->getStop($rest[4], $trips);
 				$this->api = $api->stops;
-
+				*/
 				break;
 			default:
 				break;
