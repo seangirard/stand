@@ -106,21 +106,21 @@
 
     	<script id="stand-route-tmpl" type="text/x-handlebars-template">
     	{{#with api}}
-    	<h3>
+    	<h2>
     		{{route.route_short_name}} 
     		<small>{{route.route_long_name}}</small>
-    	</h3>	
+    	</h2>	
 
 	    <div class="panel-group" id="trips-accordion">
 	    {{#each trips}}
 	    	<div class="panel panel-default">
 			    <div class="panel-heading">
 			        <a class="btn btn-lg btn-block btn-warning" data-toggle="collapse" data-parent="#trips-accordion" href="#trip-id-{{trip_id}}">
-			          <b>{{times.depart.departure_time_formatted}}</b>
-			          <small>Depart {{times.depart.stop_name}}</small>
+			          <b>{{depart.departure_time_formatted}}</b>
+			          <small>Depart {{depart.stop_name}}</small>
 			          <br>
-			          <b>{{times.arrive.arrival_time_formatted}}</b>
-			          <small>Arrive {{times.arrive.stop_name}}</small>
+			          <b>{{arrive.arrival_time_formatted}}</b>
+			          <small>Arrive {{arrive.stop_name}}</small>
 			        </a>
 			    </div>
 			    <div id="trip-id-{{trip_id}}" class="panel-collapse collapse">
