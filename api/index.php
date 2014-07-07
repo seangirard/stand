@@ -317,14 +317,24 @@ class SG_STA_GTFS {
 		// Create a string for the parameter placeholders filled to the number of params
 		$tids = implode(',', array_fill(0, count($trips), '?'));
 		$sql = "SELECT
-						*
+						DISTINCT stop_id
 						FROM stop_times
-						WHERE  
-						AND trip_id IN ($tids) 
+						WHERE trip_id IN ($tids) 
 						ORDER BY stop_sequence*100 -- fake a natsort
 					";
 		$q = $this->query($sql, $trips);
+		$stops = array();
+		foreach ( $q as $k => $stop ) {
+			$stops[$k] = $stop->stop_id;
+		}
 		
+		$sids = implode(',', array_fill(0, count($stops), '?'));
+		$sql = "SELECT
+						*
+						FROM stops
+						WHERE stop_id IN ($sids) 
+					";
+		$q = $this->query($sql, $stops);
 		
 		return $q;
 	}
