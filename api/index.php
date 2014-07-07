@@ -311,7 +311,7 @@ class SG_STA_GTFS {
 		return $q;
 	}
 
-	protected function getStop($stop, $trips) {
+	protected function getStop($sid, $trips) {
 
 		// http://www.php.net/manual/en/pdostatement.execute.php
 		// Create a string for the parameter placeholders filled to the number of params
@@ -323,12 +323,14 @@ class SG_STA_GTFS {
 						ORDER BY stop_sequence*100 -- fake a natsort
 					";
 		$q = $this->query($sql, $trips);
-		/*
+		
 		$stops = array();
 		foreach ( $q as $k => $stop ) {
-			$stops[$k] = $stop->stop_id;
+			if ( $stop->stop_id == $sid ) {
+				$stops[] = $stop;
+			}
 		}
-		
+		/*
 		$sids = implode(',', array_fill(0, count($stops), '?'));
 		$sql = "SELECT
 						*
@@ -337,7 +339,7 @@ class SG_STA_GTFS {
 					";
 		$q = $this->query($sql, $stops);
 		*/
-		return $q;
+		return $stops;
 	}
 
 	protected function getStopByTrip($stop, $trip) {
