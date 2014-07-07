@@ -345,7 +345,7 @@ class SG_STA_GTFS {
 
 		$sql = "SELECT
 						*
-						FROM stop
+						FROM stops
 						WHERE stop_id = :stop
 					";
 
