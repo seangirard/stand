@@ -64,7 +64,7 @@ class SG_STA_GTFS {
 			case 'timetable':
 				$api = new stdClass();
 				$api->route = $this->getRoute($rest[1]);
-				$api->trips = $this->getTrips($api->route->route_id);
+				$api->trips = $this->getTrips($api->route->route_id, $rest[2], $rest[3]);
 				foreach ( $api->trips as $k => $trip ) {
 					$api->trips[$k]->times = $this->getTimes($trip->trip_id);
 				}
@@ -202,15 +202,15 @@ class SG_STA_GTFS {
 		return $q[0];
 	}
 
-	protected function getTrips ( $rid, $sid=1, $did=0 ) {
-		$params = array(':rid'=>$rid, ':sid'=>$sid, ':did'=>$did);
+	protected function getTrips ( $rid, $did=1, $sid=1 ) {
+		$params = array(':rid'=>$rid, ':did'=>$did, ':sid'=>$sid);
 		
 		$sql = "SELECT
 						*
 						FROM trips
 						WHERE route_id = :rid
-						AND service_id = :sid
 						AND direction_id = :did
+						AND service_id = :sid
 					";
 		
 		return $this->query($sql, $params);
