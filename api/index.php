@@ -329,9 +329,9 @@ class SG_STA_GTFS {
 		foreach ( $q as $k => $time ) {
 			if ( $time->stop_id == $sid ) {
 				$arrival = new DateTime($time->arrival_time);
-				$time->arrival_time_formatted = $arrival->format('g:i a');
+				$time->arrival_time_formatted = $arrival->format('g:ia');
 				$departure = new DateTime($time->departure_time);
-				$time->departure_time_formatted = $departure->format('g:i a');
+				$time->departure_time_formatted = $departure->format('g:ia');
 				$stop[] = $time;
 			}
 		}
