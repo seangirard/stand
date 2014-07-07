@@ -121,8 +121,10 @@ class SG_STA_GTFS {
 				foreach ( $api->trips as $k => $trip ) {
 					$trips[] = $trip->trip_id;
 				}
-				$api->stops = $this->getStop($rest[4], $trips);
-				$this->api = $api->stops;
+				$api->times = $this->getStop($rest[4], $trips);
+				unset($api->trips);
+				$this->api->stop = $this->getStopById($rest[4]);
+				$this->api = $api;
 
 				break;
 			default:
@@ -338,14 +340,13 @@ class SG_STA_GTFS {
 		return $stop;
 	}
 
-	protected function getStopByTrip($stop, $trip) {
-		$params = array(':stop'=>$stop, ':trip'=>$trip);
+	protected function getStopById($stop) {
+		$params = array(':stop'=>$stop);
 
 		$sql = "SELECT
 						*
-						FROM stop_times
+						FROM stop
 						WHERE stop_id = :stop
-						AND trip_id = :trip
 					";
 
 		$q = $this->query($sql, $params);
