@@ -71,6 +71,9 @@ class SG_STA_GTFS {
 				foreach ( $api->trips as $k => $trip ) {
 					$api->trips[$k]->depart = $trip->times[0];
 					$api->trips[$k]->arrive = $trip->times[count($trip->times)-1];
+
+					$api->trips[$k]->times[count($trip->times)-1]->last_stop = true;
+
 				}
 				$this->api = $api;
 				//$this->api = $rest;
