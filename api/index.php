@@ -112,7 +112,17 @@ class SG_STA_GTFS {
 				$this->api = $this->getTimes($rest[1]);
 				break;
 			case 'stop':
-				$this->api = $this->getStopByTrip($rest[1], $rest[2]);
+				//$this->api = $this->getStopByTrip($rest[1], $rest[2]);
+				$api = new stdClass();
+				$api->route = $this->getRoute($rest[1]);
+				$api->trips = $this->getTrips($api->route->route_id, $rest[2], $rest[3]);
+				$trips = array();
+				foreach ( $api->trips as $k => $trip ) {
+					$trips[] = $trip->trip_id;
+				}
+				$api->stops = $this->getStop($rest[4], $trips);
+				$this->api = $api->stops;
+
 				break;
 			default:
 				break;
@@ -300,6 +310,24 @@ class SG_STA_GTFS {
 		return $q;
 	}
 
+	protected function getStop($stop, $trips) {
+
+		// http://www.php.net/manual/en/pdostatement.execute.php
+		// Create a string for the parameter placeholders filled to the number of params
+		$tids = implode(',', array_fill(0, count($trips), '?'));
+		$sql = "SELECT
+						*
+						FROM stop_times
+						WHERE  
+						AND trip_id IN ($tids) 
+						ORDER BY stop_sequence*100 -- fake a natsort
+					";
+		$q = $this->query($sql, $trips);
+		
+		
+		return $q;
+	}
+
 	protected function getStopByTrip($stop, $trip) {
 		$params = array(':stop'=>$stop, ':trip'=>$trip);
 
@@ -307,7 +335,7 @@ class SG_STA_GTFS {
 						*
 						FROM stop_times
 						WHERE stop_id = :stop
-						--AND trip_id = :trip
+						AND trip_id = :trip
 					";
 
 		$q = $this->query($sql, $params);
