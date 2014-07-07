@@ -116,11 +116,11 @@
 	    	<div class="panel panel-default">
 			    <div class="panel-heading">
 						<h4 class="panel-title">
-							{{trip_headsign}}
-							<b>{{depart.departure_time_formatted}}</b>
+							{{depart.departure_time_formatted}}
 		          <small>Depart</small>
-		          <b>{{arrive.arrival_time_formatted}}</b>
+		          {{arrive.arrival_time_formatted}}
 		          <small>Arrive</small>
+		          {{trip_headsign}}
 						</h4>			        
 		        <a class="btn btn-lg btn-block btn-warning" data-toggle="collapse" data-parent="#trips-accordion" href="#trip-id-{{trip_id}}">
 		          <b>{{depart.departure_time_formatted}}</b>
