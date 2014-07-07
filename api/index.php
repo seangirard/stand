@@ -317,7 +317,7 @@ class SG_STA_GTFS {
 		// Create a string for the parameter placeholders filled to the number of params
 		$tids = implode(',', array_fill(0, count($trips), '?'));
 		$sql = "SELECT
-						DISTINCT stop_id
+						*
 						FROM stop_times
 						WHERE trip_id IN ($tids) 
 						ORDER BY stop_sequence*100 -- fake a natsort
